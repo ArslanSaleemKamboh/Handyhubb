@@ -1,0 +1,87 @@
+
+
+/*New Header Start----------------------------*/
+
+    .clps{
+        max-width: auto;
+        margin: auto;
+    }
+.ulstyle{
+    list-style: none;
+    display: inline-flex;
+}
+.listyle{
+    margin: 0 0 0 54px;
+    font-weight: 600;
+}
+ 
+    .cuswidth1{
+        max-width: 700px;
+        margin: auto;
+    }
+    .cuswidth{
+        max-width: 500px;
+        height: 65px;
+    }
+    .cusform .form-control{
+        -webkit-appearance: none;
+        border-radius: 30px; 
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: 34px;
+        height: 45px;
+        font-size: 13px;
+        outline: none;
+        border-style: none ;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+        transition: border 0.3s ease;
+    }
+    .cusposition{
+        position: relative;  
+        cursor: pointer;
+        float: right;
+        top: -45px;
+        height: 45px;
+        width: 50px;
+        border-radius: 10px;
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+    .imgrightstyle{
+        color: #3b2a56;
+        font-size: 25px;
+        position: relative;
+        top: 9px;
+    }
+.header-menu{
+    display: none !important;
+}
+.header-bottom{
+    display: none !important;
+}
+.hideall{
+    display: none !important;
+}
+.hideall{
+    display: none !important;
+}
+.LRpadding50{
+    padding-right: 50px !important; 
+    padding-left: 50px !important;
+} 
+@media only screen and (max-width: 598px) {  
+    .LRpadding50{
+        padding-right: 6%!important;
+        padding-left: 6%!important;
+    } 
+} 
+.custompagesoffset{
+    margin-left: 33.333333%;
+} 
+form.searchdox { 
+    margin-bottom: 0px !important; 
+}
+.innerlogosize{
+    max-height: 55px;
+}
+/*New Header End---------------------------------*/ 
