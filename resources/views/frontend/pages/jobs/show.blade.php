@@ -2,28 +2,28 @@
 @section('content')
 <!-- Titlebar
 ================================================== -->
-<div class="single-page-header" data-background-image="{{asset('public/frontend')}}/images/single-job.jpg">
+<div class="single-page-header" data-background-image="{{asset('public/frontend')}}/images/single-task.jpg">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="single-page-header-inner">
 					<div class="left-side">
-						<div class="header-image"><a href="single-company-profile.html"><img src="{{asset('public/frontend')}}/images/company-logo-03a.png" alt=""></a></div>
+						<div class="header-image"><a href="single-company-profile.html"><img src="{{asset('public/frontend')}}/images/browse-companies-02.png" alt=""></a></div>
 						<div class="header-details">
-							<h3>Restaurant General Manager</h3>
+							<h3>Food Delivery Mobile Application</h3>
 							<h5>About the Employer</h5>
 							<ul>
-								<li><a href="single-company-profile.html"><i class="icon-material-outline-business"></i> King</a></li>
-								<li><div class="star-rating" data-rating="4.9"></div></li>
-								<li><img class="flag" src="{{asset('public/frontend')}}/images/flags/gb.svg" alt=""> United Kingdom</li>
+								<li><a href="single-company-profile.html"><i class="icon-material-outline-business"></i> Acue</a></li>
+								<li><div class="star-rating" data-rating="5.0"></div></li>
+								<li><img class="flag" src="{{asset('public/frontend')}}/images/flags/de.svg" alt=""> Germany</li>
 								<li><div class="verified-badge-with-title">Verified</div></li>
 							</ul>
 						</div>
 					</div>
 					<div class="right-side">
 						<div class="salary-box">
-							<div class="salary-type">Annual Salary</div>
-							<div class="salary-amount">$35k - $38k</div>
+							<div class="salary-type">Project Budget</div>
+							<div class="salary-amount">$2,500 - $4,500</div>
 						</div>
 					</div>
 				</div>
@@ -40,9 +40,10 @@
 		
 		<!-- Content -->
 		<div class="col-xl-8 col-lg-8 content-right-offset">
-
+			
+			<!-- Description -->
 			<div class="single-page-section">
-				<h3 class="margin-bottom-25">Job Description</h3>
+				<h3 class="margin-bottom-25">Project Description</h3>
 				<p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
 
 				<p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
@@ -50,79 +51,146 @@
 				<p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
 			</div>
 
+			<!-- Atachments -->
 			<div class="single-page-section">
-				<h3 class="margin-bottom-30">Location</h3>
-				<div id="single-job-map-container">
-					<div id="singleListingMap" data-latitude="51.507717" data-longitude="-0.131095" data-map-icon="im im-icon-Hamburger"></div>
-					<a href="#" id="streetView">Street View</a>
+				<h3>Attachments</h3>
+				<div class="attachments-container">
+					<a href="#" class="attachment-box ripple-effect"><span>Project Brief</span><i>PDF</i></a>
 				</div>
 			</div>
 
+			<!-- Skills -->
 			<div class="single-page-section">
-				<h3 class="margin-bottom-25">Similar Jobs</h3>
-
-				<!-- Listings Container -->
-				<div class="listings-container grid-layout">
-
-						<!-- Job Listing -->
-						<a href="#" class="job-listing">
-
-							<!-- Job Listing Details -->
-							<div class="job-listing-details">
-								<!-- Logo -->
-								<div class="job-listing-company-logo">
-									<img src="{{asset('public/frontend')}}/images/company-logo-02.png" alt="">
-								</div>
-
-								<!-- Details -->
-								<div class="job-listing-description">
-									<h4 class="job-listing-company">Coffee</h4>
-									<h3 class="job-listing-title">Barista and Cashier</h3>
-								</div>
-							</div>
-
-							<!-- Job Listing Footer -->
-							<div class="job-listing-footer">
-								<ul>
-									<li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-									<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-									<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-									<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-								</ul>
-							</div>
-						</a>
-
-						<!-- Job Listing -->
-						<a href="#" class="job-listing">
-
-							<!-- Job Listing Details -->
-							<div class="job-listing-details">
-								<!-- Logo -->
-								<div class="job-listing-company-logo">
-									<img src="{{asset('public/frontend')}}/images/company-logo-03.png" alt="">
-								</div>
-
-								<!-- Details -->
-								<div class="job-listing-description">
-									<h4 class="job-listing-company">King <span class="verified-badge" title="Verified Employer" data-tippy-placement="top"></span></h4>
-									<h3 class="job-listing-title">Restaurant Manager</h3>
-								</div>
-							</div>
-
-							<!-- Job Listing Footer -->
-							<div class="job-listing-footer">
-								<ul>
-									<li><i class="icon-material-outline-location-on"></i> San Francisco</li>
-									<li><i class="icon-material-outline-business-center"></i> Full Time</li>
-									<li><i class="icon-material-outline-account-balance-wallet"></i> $35000-$38000</li>
-									<li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-								</ul>
-							</div>
-						</a>
-					</div>
-					<!-- Listings Container / End -->
-
+				<h3>Skills Required</h3>
+				<div class="task-tags">
+					<span>iOS</span>
+					<span>Android</span>
+					<span>mobile apps</span>
+					<span>design</span>
 				</div>
+			</div>
+			<div class="clearfix"></div>
+			
+			<!-- Freelancers Bidding -->
+			<div class="boxed-list margin-bottom-60">
+				<div class="boxed-list-headline">
+					<h3><i class="icon-material-outline-group"></i> Freelancers Bidding</h3>
+				</div>
+				<ul class="boxed-list-ul">
+					<li>
+						<div class="bid">
+							<!-- Avatar -->
+							<div class="bids-avatar">
+								<div class="freelancer-avatar">
+									<div class="verified-badge"></div>
+									<a href="single-freelancer-profile.html"><img src="{{asset('public/frontend')}}/images/user-avatar-big-01.jpg" alt=""></a>
+								</div>
+							</div>
+							
+							<!-- Content -->
+							<div class="bids-content">
+								<!-- Name -->
+								<div class="freelancer-name">
+									<h4><a href="single-freelancer-profile.html">Tom Smith <img class="flag" src="{{asset('public/frontend')}}/images/flags/gb.svg" alt="" title="United Kingdom" data-tippy-placement="top"></a></h4>
+									<div class="star-rating" data-rating="4.9"></div>
+								</div>
+							</div>
+							
+							<!-- Bid -->
+							<div class="bids-bid">
+								<div class="bid-rate">
+									<div class="rate">$4,400</div>
+									<span>in 7 days</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="bid">
+							<!-- Avatar -->
+							<div class="bids-avatar">
+								<div class="freelancer-avatar">
+									<div class="verified-badge"></div>
+									<a href="single-freelancer-profile.html"><img src="{{asset('public/frontend')}}/images/user-avatar-big-02.jpg" alt=""></a>
+								</div>
+							</div>
+							
+							<!-- Content -->
+							<div class="bids-content">
+								<!-- Name -->
+								<div class="freelancer-name">
+									<h4><a href="single-freelancer-profile.html">David Peterson <img class="flag" src="{{asset('public/frontend')}}/images/flags/de.svg" alt="" title="Germany" data-tippy-placement="top"></a></h4>
+									<div class="star-rating" data-rating="4.2"></div>
+								</div>
+							</div>
+							
+							<!-- Bid -->
+							<div class="bids-bid">
+								<div class="bid-rate">
+									<div class="rate">$2,200</div>
+									<span>in 14 days</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="bid">
+							<!-- Avatar -->
+							<div class="bids-avatar">
+								<div class="freelancer-avatar">
+									<a href="single-freelancer-profile.html"><img src="{{asset('public/frontend')}}/images/user-avatar-placeholder.png" alt=""></a>
+								</div>
+							</div>
+							
+							<!-- Content -->
+							<div class="bids-content">
+								<!-- Name -->
+								<div class="freelancer-name">
+									<h4><a href="single-freelancer-profile.html">Marcin Kowalski <img class="flag" src="{{asset('public/frontend')}}/images/flags/pl.svg" alt="" title="Poland" data-tippy-placement="top"></a></h4>
+									<span class="not-rated">Minimum of 3 votes required</span>
+
+								</div>
+							</div>
+							
+							<!-- Bid -->
+							<div class="bids-bid">
+								<div class="bid-rate">
+									<div class="rate">$3,800</div>
+									<span>In 20 days</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="bid">
+							<!-- Avatar -->
+							<div class="bids-avatar">
+								<div class="freelancer-avatar">
+									<a href="single-freelancer-profile.html"><img src="{{asset('public/frontend')}}/images/user-avatar-placeholder.png" alt=""></a>
+								</div>
+							</div>
+							
+							<!-- Content -->
+							<div class="bids-content">
+								<!-- Name -->
+								<div class="freelancer-name">
+									<h4><a href="single-freelancer-profile.html">Sebastiano Piccio <img class="flag" src="{{asset('public/frontend')}}/images/flags/it.svg" alt="" title="Italy" data-tippy-placement="top"></a></h4>
+									<div class="star-rating" data-rating="4.5"></div>
+								</div>
+							</div>
+							
+							<!-- Bid -->
+							<div class="bids-bid">
+								<div class="bid-rate">
+									<div class="rate">$3,400</div>
+									<span>In 10 days</span>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+
 		</div>
 		
 
@@ -130,36 +198,46 @@
 		<div class="col-xl-4 col-lg-4">
 			<div class="sidebar-container">
 
-				<a href="#small-dialog" class="apply-now-button popup-with-zoom-anim">Apply Now <i class="icon-material-outline-arrow-right-alt"></i></a>
-					
-				<!-- Sidebar Widget -->
+				<div class="countdown green margin-bottom-35">6 days, 23 hours left</div>
+
 				<div class="sidebar-widget">
-					<div class="job-overview">
-						<div class="job-overview-headline">Job Summary</div>
-						<div class="job-overview-inner">
-							<ul>
-								<li>
-									<i class="icon-material-outline-location-on"></i>
-									<span>Location</span>
-									<h5>London, United Kingdom</h5>
-								</li>
-								<li>
-									<i class="icon-material-outline-business-center"></i>
-									<span>Job Type</span>
-									<h5>Full Time</h5>
-								</li>
-								<li>
-									<i class="icon-material-outline-local-atm"></i>
-									<span>Salary</span>
-									<h5>$35k - $38k</h5>
-								</li>
-								<li>
-									<i class="icon-material-outline-access-time"></i>
-									<span>Date Posted</span>
-									<h5>2 days ago</h5>
-								</li>
-							</ul>
+					<div class="bidding-widget">
+						<div class="bidding-headline"><h3>Bid on this job!</h3></div>
+						<div class="bidding-inner">
+
+							<!-- Headline -->
+							<span class="bidding-detail">Set your <strong>minimal rate</strong></span>
+
+							<!-- Price Slider -->
+							<div class="bidding-value">$<span id="biddingVal"></span></div>
+							<input class="bidding-slider" type="text" value="" data-slider-handle="custom" data-slider-currency="$" data-slider-min="2500" data-slider-max="4500" data-slider-value="auto" data-slider-step="50" data-slider-tooltip="hide" />
+							
+							<!-- Headline -->
+							<span class="bidding-detail margin-top-30">Set your <strong>delivery time</strong></span>
+
+							<!-- Fields -->
+							<div class="bidding-fields">
+								<div class="bidding-field">
+									<!-- Quantity Buttons -->
+									<div class="qtyButtons">
+										<div class="qtyDec"></div>
+										<input type="text" name="qtyInput" value="1">
+										<div class="qtyInc"></div>
+									</div>
+								</div>
+								<div class="bidding-field">
+									<select class="selectpicker default">
+										<option selected>Days</option>
+										<option>Hours</option>
+									</select>
+								</div>
+							</div>
+
+							<!-- Button -->
+							<button id="snackbar-place-bid" class="button ripple-effect move-on-hover full-width margin-top-30"><span>Place a Bid</span></button>
+
 						</div>
+						<div class="bidding-signup">Don't have an account? <a href="#sign-in-dialog" class="register-tab sign-in popup-with-zoom-anim">Sign Up</a></div>
 					</div>
 				</div>
 
@@ -201,4 +279,8 @@
 	</div>
 </div>
 
+
+<!-- Spacer -->
+<div class="margin-top-15"></div>
+<!-- Spacer / End-->
 @endsection
