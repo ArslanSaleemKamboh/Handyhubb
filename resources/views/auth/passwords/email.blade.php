@@ -4,7 +4,12 @@
 <div class="container center">
     <div class="d-flex justify-content-center">
     <div class="w-75">
-    <h1 class="text-center text-gray">Forget Your Password?</h1>
+    <div class="m-auto logo-width mb-3">
+    <div class="auth-logo">
+<img src="{{asset('public/frontend/images/logo.svg')}}" alt="">
+</div>
+    </div>
+    <h2 class="text-center text-gray">Forget Your Password?</h2>
     <p class="text-center text-gray">Don't worry, We got you</p>
     <p class="text-center text-gray">Enter the email associated with your account</p>
 
@@ -32,10 +37,10 @@
 
                         <div class="form-group row mt-3 mb-0">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-dark">
+                                <button type="submit" class="btn btn-dark reset-btn">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
-                                <a href="{{route('login')}}" class="btn btn-dark">
+                                <a href="{{route('login')}}" class="btn btn-dark reset-btn">
                                     {{ __('Cancel') }}
                                 </a>
                             </div>

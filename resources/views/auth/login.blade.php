@@ -4,13 +4,13 @@ Login
 @endsection
 @section('content')
 <div class="container center">
-<div class="d-flex justify-content-center mb-3">
+<div class="m-auto logo-width mb-3">
     <div class="auth-logo">
-<img src="{{asset('public/frontend/images/logo.png')}}">
+<img src="{{asset('public/frontend/images/logo.svg')}}" alt="">
 </div>
     </div>
 <div class="d-flex justify-content-center">
-        <div class="w-50 w-md-50 w-sm-75">
+        <div class="auth-card-width">
             <div class="auth-form">
            <!-- <h1 class="text-center">Login</h1> -->
            <form method="POST" action="{{ route('login') }}">

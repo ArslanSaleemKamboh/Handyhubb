@@ -4,14 +4,15 @@ Register
 @endsection
 @section('content')
 <div class="container center">
-<div class="d-flex justify-content-center mb-3">
+<div class="m-auto logo-width mb-3">
     <div class="auth-logo">
-<img src="{{asset('public/frontend/images/logo.png')}}">
+<img src="{{asset('public/frontend/images/logo.svg')}}" alt="">
 </div>
     </div>
     <div class="d-flex justify-content-center">
-        <div class="w-sm-75 w-lg-50 w-md-50">
+        <div class="auth-card-width">
             <!-- <h1 class="text-center">{{ __('Register') }}</h1> -->
+            <div class="auth-form">
         <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -95,6 +96,7 @@ Register
                             </div>
                         </div>
                     </form>
+            </div>
         </div>
     </div>
 </div>

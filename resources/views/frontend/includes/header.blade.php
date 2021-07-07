@@ -11,7 +11,7 @@
 				
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index.html"><img src="{{asset('public/frontend/images/logo.png')}}" alt=""></a>
+					<a href="index.html"><img src="{{asset('public/frontend/images/logo.svg')}}" alt=""></a>
 				</div>
 
 				<!-- Main Navigation -->

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -37,4 +38,6 @@ Route::get('/single/{id}', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/profile/update', [UserController::class, 'edit'])->name('home.profile.update');
+Route::post('/home/profile/save', [UserController::class, 'update'])->name('home.profile.save');
 

@@ -67,14 +67,50 @@
             transform: translate(-50%, -50%);
 
         }
-
-
-
         .auth-form {
-
             width: 100%;
-
         }
+        .logo-width{
+          width: 25%;
+        }
+        .auth-card-width{
+          width: 50% !important;
+        }
+        .footer-nav{
+          font-size: 1.25rem;
+          font-weight: 500;
+        }
+        @media (max-width: 575.98px) { 
+          .auth-card-width{
+          width: 75% !important;
+        }
+        .logo-width{
+          width: 50%;
+        }
+        .footer-nav{
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
+        .reset-btn{
+          width: 100% !important;
+          margin-bottom: 5px;
+        }
+         }
+        @media (max-width: 767.98px) {
+          .auth-card-width{
+          width: 75% !important;
+        }
+        .logo-width{
+          width: 50%;
+        }
+        .footer-nav{
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
+        .reset-btn{
+          width: 100% !important;
+        }
+         }
         .checkbox-color:checked{
             background-color: #cfcfcf;
             border-color:black;
@@ -128,7 +164,7 @@
                             <div class="auth-form mb-5">
 
                             <div class="auth-logo text-center mb-3">
-<img src="{{asset('public/frontend/images/logo.png')}}">
+                            <img class="w-75" src="{{asset('public/frontend/images/logo.svg')}}" alt="">
 </div>
 
                                 <p class="text-center">Don't have an account? Register one!</p>
@@ -156,9 +192,9 @@
                             <div class="auth-form mb-5">
 
                             <div class="auth-logo text-center mb-3">
-<img src="{{asset('public/frontend/images/logo.png')}}">
+                            <img class="w-75" src="{{asset('public/frontend/images/logo.svg')}}" alt="">
 </div>
->
+
 
                                 <p class="text-center"> have an account? Login here!</p>
 
@@ -203,7 +239,7 @@
     <!-- Grid column -->
     <div class="col-md-12 text-center mb-3">
       <h4 class="font-weight-bold">
-        Unknown - <span style="font-weight: 400;">Approximate geo location</span>
+        Unknown - <span class="footer-nav" style="font-weight: 400;">Approximate geo location</span>
       </h4>
     </div>
     <!-- Grid column -->
@@ -216,7 +252,7 @@
     <!-- Grid column -->
     <div class="col-md-12 text-center icons">
 
-      <div class="mb-5 flex-center">
+      <div class="mb-3 flex-center">
 
         <!-- Facebook -->
         <a class="fb-ic">
@@ -247,10 +283,10 @@
 
     <!-- Grid column -->
     <div class="col-md-4"></div>
-    <div class="col-md-4 d-flex justify-content-around ">
-    <h5>About Us</h5>
-    <h5>Help</h5>
-    <h5>Terms & conditions</h5>
+    <div class="col-md-4 d-flex justify-content-around justify-content mb-1">
+    <a href="#" class="text-decoration-none text-dark footer-nav ">About Us</a>
+    <a href="#" class="text-decoration-none text-dark footer-nav">Help</a>
+    <a href="#" class="text-decoration-none text-dark footer-nav">Terms & conditions</a>
     </div>
     <div class="col-md-4 ">
     </div>
