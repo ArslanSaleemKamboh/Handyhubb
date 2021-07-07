@@ -242,6 +242,22 @@
 
   </div>
   <!-- Grid row-->
+    <div class="container">
+  <div class="row ">
+
+    <!-- Grid column -->
+    <div class="col-md-4"></div>
+    <div class="col-md-4 d-flex justify-content-around ">
+    <h5>About Us</h5>
+    <h5>Help</h5>
+    <h5>Terms & conditions</h5>
+    </div>
+    <div class="col-md-4 ">
+    </div>
+    <!-- Grid column -->
+    </div>
+  </div>
+  <!-- Grid row-->
 
 </div>
 <!-- Footer Links -->
