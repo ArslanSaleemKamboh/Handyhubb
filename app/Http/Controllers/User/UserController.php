@@ -99,7 +99,7 @@ class UserController extends Controller
                 if($profile_updated){
                     return redirect()->route('home.profile.update')->with('success','Profile Updated Successfully');
                 }else{
-                    return redirect()->route('home.profile.update')->with('error','Some error occure! Plz contact with developer.');
+                    return redirect()->route('home.profile.update')->with('error','Some error occure.');
                 }
     }
 
