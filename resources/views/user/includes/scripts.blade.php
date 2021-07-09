@@ -11,17 +11,18 @@
 <script src="{{asset('public/frontend');}}/js/magnific-popup.min.js"></script>
 <script src="{{asset('public/frontend');}}/js/slick.min.js"></script>
 <script src="{{asset('public/frontend');}}/js/custom.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 <script>
     // Snackbar for user status switcher
-    $('#snackbar-user-status label').click(function() { 
-        Snackbar.show({
-            text: 'Your status has been changed!',
-            pos: 'bottom-center',
-            showAction: false,
-            actionText: "Dismiss",
-            duration: 3000,
-            textColor: '#fff',
-            backgroundColor: '#383838'
-        }); 
-    }); 
+    // $('#snackbar-user-status label').click(function() { 
+    //     Snackbar.show({
+    //         text: 'Your status has been changed!',
+    //         pos: 'bottom-center',
+    //         showAction: false,
+    //         actionText: "Dismiss",
+    //         duration: 3000,
+    //         textColor: '#fff',
+    //         backgroundColor: '#383838'
+    //     }); 
+    // }); 
     </script>

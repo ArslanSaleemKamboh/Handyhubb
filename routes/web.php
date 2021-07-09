@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\JobController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -40,4 +41,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home/profile/update', [UserController::class, 'edit'])->name('home.profile.update');
 Route::post('/home/profile/save', [UserController::class, 'update'])->name('home.profile.save');
+
+Route::group(['prefix'=>'user','as'=>'user.'], function(){
+
+    Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
+    Route::get('/add-Job/{id?}', [JobController::class, 'addJob'])->name('add-Job');
+    Route::post('/post-Job', [JobController::class, 'postJob'])->name('post-Job');
+    Route::get('/delete-job/{id?}', [JobController::class, 'deleteJob'])->name('delete-job');
+});
 
