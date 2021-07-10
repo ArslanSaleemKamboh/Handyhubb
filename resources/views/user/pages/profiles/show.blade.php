@@ -2,14 +2,14 @@
 @section('content')
 <!-- Dashboard Headline -->
 <div class="dashboard-headline">
-    <h3>Update Profile</h3>
+    <h3>Profile</h3>
 
     <!-- Breadcrumbs -->
     <nav id="breadcrumbs" class="dark">
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">Dashboard</a></li>
-            <li>Update Profile</li>
+            <li>Profile</li>
         </ul>
     </nav>
 </div>
@@ -27,103 +27,83 @@
 @endif
 <!-- Row -->
 <div class="row">
-<form action="{{route('home.profile.save')}}" method="post" enctype="multipart/form-data">
-    @csrf
     <!-- Dashboard Box -->
     <div class="col-xl-12">
         <div class="dashboard-box margin-top-0">
 
             <!-- Headline -->
-            <div class="headline">
+            <div class="headline d-flex justify-content-between align-items-baseline">
                 <h3><i class="icon-material-outline-account-circle"></i>Profile</h3>
+                    <!-- Button -->
+        <a href="{{route('home.profile.update')}}" class="button ripple-effect small">Edit</a>
             </div>
+            
 
             <div class="content with-padding padding-bottom-0">
 
                 
                 <div class="row">
-                    <div class="col-auto">
-                        <div class="avatar-wrapper" data-tippy-placement="bottom" title="Change Avatar">
+                    <div class="col-12">
+                        <div class="avatar-wrapper rounded-circle mx-auto" >
                             <img class="profile-pic" src="{{(isset(Auth::user()->profile->profile_img))?asset('public/storage').'/'.Auth::user()->profile->profile_img:asset('public/frontend/images/user-avatar-placeholder.png')}}" alt="" />
-                            <div class="upload-button"></div>
-                            <input class="file-upload" type="file" accept="image/*" name="profile_img"/>
                         </div>
                     </div>
 
                     <div class="col">
                         <div class="row">
-                        <div class="col-xl-6">
+                        <div class="col-xl-6 padding-left-230">
                                 <div class="submit-field">
                                     <h5>Name</h5>
-                                    <input name="name" type="text" class="with-border @error('phone')is-invalid @enderror" value="{{(isset(Auth::user()->name))?Auth::user()->name:''}}">
-                                    @error('name')
-              <div class="text-danger">
-              {{$message}}
-              </div>
-              @enderror
+                                    <p name="name" type="text" class="with-border ">{{(isset(Auth::user()->name))?Auth::user()->name:''}}</p>
                                 </div>
                             </div>
-                        <div class="col-xl-6">
+                        <div class="col-xl-6 padding-left-230">
                                 <div class="submit-field">
                                     <h5>Email</h5>
-                                    <input name="email" disabled="true" type="text" class="with-border @error('phone')is-invalid @enderror" value="{{(isset(Auth::user()->email))?Auth::user()->email:''}}">
-                                    @error('email')
-              <div class="text-danger">
-              {{$message}}
-              </div>
-              @enderror
+                                    <p name="name" type="text" class="with-border ">{{(isset(Auth::user()->email))?Auth::user()->email:''}}</p>
                                 </div>
                             </div>
-                            <div class="col-xl-6">
+                            <div class="col-xl-6 padding-left-230">
                                 <div class="submit-field">
                                     <h5>Gender</h5>
-                                    <select name="gender" class="selectpicker" tabindex="-98">
-                                        <option value="">Select Your Gender</option>
-                                        <option {{(isset(Auth::user()->profile->gender)=='male')?'selected':''}} value="male">male</option>
-                                        <option {{(isset(Auth::user()->profile->gender)=='female')?'selected':''}} value="female">female</option>
-                                    </select>
+                                    <p name="name" type="text" class="with-border ">{{(isset(Auth::user()->profile->gender))?Auth::user()->profile->gender:''}}</p>
                                 </div>
                             </div>
 
-                            <div class="col-xl-6">
+                            <div class="col-xl-6 padding-left-230">
                                 <div class="submit-field">
                                     <h5>Phone</h5>
-                                    <input name="phone" type="text" class="with-border @error('phone')is-invalid @enderror" value="{{(isset(Auth::user()->phone))?Auth::user()->phone:''}}">
-                                    @error('phone')
-              <div class="text-danger">
-              {{$message}}
-              </div>
-              @enderror
+                                    <p name="name" type="text" class="with-border ">{{(isset(Auth::user()->phone))?Auth::user()->phone:''}}</p>
                                 </div>
                             </div>
-                            <div class="col-xl-6">
+                            <div class="col-xl-6 padding-left-230">
                                 <div class="submit-field">
                                     <h5>State</h5>
-                                    <input name="state" type="text" class="with-border" value="{{(isset(Auth::user()->profile->state))?Auth::user()->profile->state  :''}}">
+                                    <p name="name" type="text" class="with-border ">{{(isset(Auth::user()->profile->state))?Auth::user()->profile->state:'NULL'}}</p>
                                 </div>
                             </div>
-                            <div class="col-xl-6">
+                            <div class="col-xl-6 padding-left-230">
                                 <div class="submit-field">
                                     <h5>Country</h5>
-                                    <input type="text" name="country" class="with-border" value="{{(isset(Auth::user()->profile->country))?Auth::user()->profile->country:''}}">
+                                    <p name="name" type="text" class="with-border ">{{(isset(Auth::user()->profile->country))?Auth::user()->profile->country:'NULL'}}</p>
                                 </div>
                             </div>
-                            <div class="col-xl-6">
+                            <div class="col-xl-6 padding-left-230">
                                 <div class="submit-field">
                                     <h5>City</h5>
-                                    <input type="text" name="city" class="with-border" value="{{(isset(Auth::user()->profile->city))?Auth::user()->profile->city:''}}">
+                                    <p name="name" type="text" class="with-border ">{{(isset(Auth::user()->profile->city))?Auth::user()->profile->city:'NULL'}}</p>
                                 </div>
                             </div>
-                            <div class="col-xl-6">
+                            <div class="col-xl-6 padding-left-230">
                                 <div class="submit-field">
                                     <h5>Zip Code</h5>
-                                    <input type="text" name="zip_code" class="with-border" value="{{(isset(Auth::user()->profile->zipcode))?Auth::user()->profile->zipcode:''}}">
+                                    <p name="name" type="text" class="with-border ">{{(isset(Auth::user()->profile->zipcode))?Auth::user()->profile->zipcode:'NULL'}}</p>
                                 </div>
                             </div>
-                            <div class="col-xl-12">
+                            <div class="col-xl-12 padding-left-230">
                                 <div class="submit-field">
                                     <h5>Street Address</h5>
-                                    <input type="text" name="address" class="with-border" value="{{(isset(Auth::user()->profile->address))?Auth::user()->profile->address:''}}">
+                                    <p name="name" type="text" class="with-border ">{{(isset(Auth::user()->profile->address))?Auth::user()->profile->address:'NULL'}}</p>
                                 </div>
                             </div>
 
@@ -152,11 +132,7 @@
         </div>
     </div>
 
-    <!-- Button -->
-    <div class="col-xl-12">
-        <button type="submit" class="button ripple-effect big margin-top-30">Save Changes</button>
-    </div>
-    </form>
+
 </div>
 <!-- Row / End -->
 @endsection

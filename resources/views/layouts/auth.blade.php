@@ -20,116 +20,7 @@
 
     
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{asset('public/backend/plugins/intl-tel-input/build/css/intlTelInput.css')}}">
-  <!-- <link rel="stylesheet" href="{{asset('public/backend/plugins/intl-tel-input/build/css/demo.css')}}"> -->
-    <style>
-
-        .leftside,
-
-        .rightside {
-
-            height: 100vh;
-
-            width: 100%;
-
-        }
-
-
-
-        .leftside {
-
-            position: relative;
-
-        }
-
-
-
-        .rightside {
-
-            position: relative;
-
-            background-color: #cfcfcf;
-
-        }
-
-
-
-        .center {
-
-            position: absolute;
-
-            top: 50%;
-
-            left: 50%;
-
-            transform: translate(-50%, -50%);
-
-        }
-        .auth-form {
-            width: 100%;
-        }
-        .logo-width{
-          width: 25%;
-        }
-        .auth-card-width{
-          width: 50% !important;
-        }
-        .footer-nav{
-          font-size: 1.25rem;
-          font-weight: 500;
-        }
-        @media (max-width: 575.98px) { 
-          .auth-card-width{
-          width: 75% !important;
-        }
-        .logo-width{
-          width: 50%;
-        }
-        .footer-nav{
-          font-size: 1.2rem;
-          font-weight: 500;
-        }
-        .reset-btn{
-          width: 100% !important;
-          margin-bottom: 5px;
-        }
-         }
-        @media (max-width: 767.98px) {
-          .auth-card-width{
-          width: 75% !important;
-        }
-        .logo-width{
-          width: 50%;
-        }
-        .footer-nav{
-          font-size: 1.2rem;
-          font-weight: 500;
-        }
-        .reset-btn{
-          width: 100% !important;
-        }
-         }
-        .checkbox-color:checked{
-            background-color: #cfcfcf;
-            border-color:black;
-        }
-        .checkbox-color:focus{
-             border-color:black;
-            box-shadow:none;
-        }
-        .icons a{
-            text-decoration: none;
-        }
-        .icons a i{
-            text-decoration: none;
-            font-size: 50px;
-            margin-right: 20px;
-            color: black;
-        }
-
-    </style>
+    @include('layouts.styles')
 
 </head>
 
@@ -164,7 +55,9 @@
                             <div class="auth-form mb-5">
 
                             <div class="auth-logo text-center mb-3">
+                            <a href="{{route('main')}}">
                             <img class="w-75" src="{{asset('public/frontend/images/logo.svg')}}" alt="">
+                            </a>
 </div>
 
                                 <p class="text-center">Don't have an account? Register one!</p>
@@ -192,7 +85,9 @@
                             <div class="auth-form mb-5">
 
                             <div class="auth-logo text-center mb-3">
+                            <a href="{{route('main')}}">
                             <img class="w-75" src="{{asset('public/frontend/images/logo.svg')}}" alt="">
+                            </a>
 </div>
 
 
@@ -309,63 +204,7 @@
 
     <!-- JavaScript Bundle with Popper -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="{{asset('public/backend/plugins/intl-tel-input/build/js/intlTelInput.js')}}"></script>
-    <script>
-        $(document).ready(function () {
-          //called when key is pressed in textbox
-          $("#phone").keypress(function (e) {
-             //if the letter is not digit then display error and don't type anything
-             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-                //display error message
-                $("#pherrormsgdv").html("<strong>Only Digits are allowed</strong>").show().fadeOut(2000);
-                       return false;
-            }
-           });
-           
-            $("#show_hide_password a").on('click', function(event) {
-                event.preventDefault();
-                if($('#show_hide_password input').attr("type") == "text"){
-                    $('#show_hide_password input').attr('type', 'password');
-                    $('#show_hide_password i').addClass( "fa-eye-slash" );
-                    $('#show_hide_password i').removeClass( "fa-eye" );
-                }else if($('#show_hide_password input').attr("type") == "password"){
-                    $('#show_hide_password input').attr('type', 'text');
-                    $('#show_hide_password i').removeClass( "fa-eye-slash" );
-                    $('#show_hide_password i').addClass( "fa-eye" );
-                }
-            });
-        });
-
-    </script>
-      <script>
-    var input = document.querySelector("#phone");
-    window.intlTelInput(input, {
-      // allowDropdown: false,
-      autoHideDialCode: true,
-      // autoPlaceholder: "off",
-      // dropdownContainer: document.body,
-      // excludeCountries: ["us"],
-      // formatOnDisplay: false,
-      // geoIpLookup: function(callback) {
-      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-      //     var countryCode = (resp && resp.country) ? resp.country : "";
-      //     callback(countryCode);
-      //   });
-      // },
-    //   hiddenInput: "full_number",
-      formatOnDisplay:true,
-      // initialCountry: "auto",
-      // localizedCountries: { 'de': 'Deutschland' },
-      // nationalMode: false,
-      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-      // placeholderNumberType: "MOBILE",
-      // preferredCountries: ['cn', 'jp'],
-      separateDialCode: true,
-      utilsScript: "{{asset('public/backend/plugins/intl-tel-input/build/js/utils.js')}}",
-    });
-  </script>
+    @include('layouts.scripts')
 </body>
 
 

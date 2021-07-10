@@ -18,7 +18,7 @@ class Authenticate extends Middleware
             if($request->route()->getPrefix()=="admin"){
                 return route('admin/login');
             }
-            if($request->routeIs('home.*')){
+            if($request->is('home/*')){
                 return route('login');
             }
             // return route('login');

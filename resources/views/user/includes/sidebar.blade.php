@@ -44,8 +44,19 @@
 						</ul>
 
 						<ul data-submenu-title="Account">
+						     <li class="{{request()->routeIs('home.profile.update')?'active':''}}"><a href="{{route('home.profile.update')}}"><i class="icon-material-outline-account-circle"></i> Update Profile</a></li>
+							<li class="{{request()->routeIs('home.change_password')?'active':''}}"><a href="{{route('home.change_password')}}"><i class="icon-material-outline-lock"></i> Change Password</a></li>
 							<li><a href="dashboard-settings.html"><i class="icon-material-outline-settings"></i> Settings</a></li>
-							<li><a href="index-logged-out.html"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
+							<li>
+                            <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"
+                            >
+                              <i class="icon-material-outline-power-settings-new"></i> Logout</a>
+                              </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
 						</ul>
 						
 					</div>

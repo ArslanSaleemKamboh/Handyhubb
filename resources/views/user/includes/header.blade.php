@@ -222,7 +222,7 @@
 										<!-- Notification -->
 										<li class="notifications-not-read">
 											<a href="dashboard-messages.html">
-												<span class="notification-avatar status-online"><img src="{{ asset('public/frontend');}}/images/user-avatar-small-03.jpg" alt=""></span>
+												<span class="notification-avatar status-online"><img src="{{asset('public/frontend/images/user-avatar-small-03.jpg')}}" alt=""></span>
 												<div class="notification-text">
 													<strong>David Peterson</strong>
 													<p class="notification-msg-text">Thanks for reaching out. I'm quite busy right now on many...</p>
@@ -271,7 +271,7 @@
 					<!-- Messages -->
 					<div class="header-notifications user-menu">
 						<div class="header-notifications-trigger">
-							<a href="#"><div class="user-avatar status-online"><img src="{{ asset('public/frontend');}}/images/user-avatar-small-01.jpg" alt=""></div></a>
+							<a href="#"><div class="user-avatar status-online"><img height='100%' src="{{ (isset(Auth::user()->profile->profile_img))?asset('public/storage').'/'.Auth::user()->profile->profile_img:asset('public/frontend/images/user-avatar-small-01.jpg')}}" alt=""></div></a>
 						</div>
 
 						<!-- Dropdown -->
@@ -282,7 +282,7 @@
 
 								<!-- User Name / Avatar -->
 								<div class="user-details">
-									<div class="user-avatar status-online"><img src="{{ asset('public/frontend');}}/images/user-avatar-small-01.jpg" alt=""></div>
+									<div class="user-avatar status-online"><img height="100%" src="{{ (isset(Auth::user()->profile->profile_img))?asset('public/storage').'/'.Auth::user()->profile->profile_img:asset('public/frontend/images/user-avatar-small-01.jpg')}}" alt=""></div>
 									<div class="user-name">
 										Tom Smith <span>Freelancer</span>
 									</div>
@@ -299,6 +299,8 @@
 						
 						<ul class="user-menu-small-nav">
 							<li><a href="dashboard.html"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
+							<li><a href="{{route('home.profile.update')}}"><i class="icon-material-outline-account-circle"></i> Update Profile</a></li>
+							<li><a href="{{route('home.change_password')}}"><i class="icon-material-outline-lock"></i> Change Password</a></li>
 							<li><a href="dashboard-settings.html"><i class="icon-material-outline-settings"></i> Settings</a></li>
 							<li>
                             <a href="{{ route('logout') }}"

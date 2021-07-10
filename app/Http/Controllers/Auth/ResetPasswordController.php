@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Validation\Rules\Password;
 
 class ResetPasswordController extends Controller
 {
@@ -18,7 +19,26 @@ class ResetPasswordController extends Controller
     | explore this trait and override any methods you wish to tweak.
     |
     */
-
+    public function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => ['required', 'confirmed', 
+            Password::min(8)
+                 ->letters()
+                 ->mixedCase()
+                 ->numbers()
+                 ->symbols()
+        ],
+        ];
+    }
+    protected function validationErrorMessages()
+    {
+        return [
+             'confirmed' => 'The :attribute and confirm :attribute does not match.'
+        ];
+    }
     use ResetsPasswords;
 
     /**

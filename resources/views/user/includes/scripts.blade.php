@@ -11,6 +11,8 @@
 <script src="{{asset('public/frontend');}}/js/magnific-popup.min.js"></script>
 <script src="{{asset('public/frontend');}}/js/slick.min.js"></script>
 <script src="{{asset('public/frontend');}}/js/custom.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+@include('user.includes.message')
 <script>
     // Snackbar for user status switcher
     $('#snackbar-user-status label').click(function() { 
@@ -25,3 +27,4 @@
         }); 
     }); 
     </script>
+    

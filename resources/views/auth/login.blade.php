@@ -6,7 +6,9 @@ Login
 <div class="container center">
 <div class="m-auto logo-width mb-3">
     <div class="auth-logo">
+    <a href="{{route('main')}}">
 <img src="{{asset('public/frontend/images/logo.svg')}}" alt="">
+    </a>
 </div>
     </div>
 <div class="d-flex justify-content-center">
@@ -17,10 +19,10 @@ Login
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-12 col-form-label text-md-right">{{ __('Email Address') }}*</label>
+                            <label for="email" class="col-md-12 col-form-label text-md-right">{{ __('Email Address') }}</label>
 
                             <div class="col-md-12">
-                                <input id="email" placeholder="Email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+                                <input id="email" placeholder="Email Address*" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -31,11 +33,11 @@ Login
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-12 col-form-label text-md-right">{{ __('Password') }}*</label>
+                            <label for="password" class="col-md-12 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-12 input-group" id="show_hide_password">
-                                <input id="password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="current-password">
-                                <div class="input-group-addon input-group-text">
+                                <input id="password" placeholder="Password*" type="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" name="password"  autocomplete="current-password">
+                                <div class="input-group-addon input-group-text bg-white rounded">
                                     <a href=""><i class="fa fa-eye-slash text-dark" aria-hidden="true"></i></a>
                                 </div>
 
@@ -66,7 +68,7 @@ Login
                                 </button>
                                 <div class="col-md-12">
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link text-dark" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif

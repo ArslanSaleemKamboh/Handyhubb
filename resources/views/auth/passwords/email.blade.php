@@ -6,7 +6,9 @@
     <div class="w-75">
     <div class="m-auto logo-width mb-3">
     <div class="auth-logo">
+    <a href="{{route('main')}}">
 <img src="{{asset('public/frontend/images/logo.svg')}}" alt="">
+    </a>
 </div>
     </div>
     <h2 class="text-center text-gray">Forget Your Password?</h2>
@@ -37,10 +39,10 @@
 
                         <div class="form-group row mt-3 mb-0">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-dark reset-btn">
+                                <button type="submit" class="btn btn-dark rounded-pill reset-btn">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
-                                <a href="{{route('login')}}" class="btn btn-dark reset-btn">
+                                <a href="{{route('login')}}" class="btn btn-dark rounded-pill reset-btn">
                                     {{ __('Cancel') }}
                                 </a>
                             </div>

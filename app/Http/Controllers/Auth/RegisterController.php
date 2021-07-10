@@ -63,6 +63,8 @@ class RegisterController extends Controller
                  ->numbers()
                  ->symbols()
                 ],
+        ],[
+            'confirmed' => 'The :attribute and confirm :attribute does not match.'
         ]);
     }
 
