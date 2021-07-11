@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\user\profile;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProfileRequest extends FormRequest
+class storeJobRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,12 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'profile_img' => 'image|mimes:jpeg,png,jpg,gif|',
-            'phone'=>'',
-            'state'=>'',
-            'country'=>'',
-            'city'=>'',
-            'zip_code'=>'',
-            'address'=>'',
-            'gender'=>'',
+            'title' => 'required|max:191',
+            'location' => 'required|max:191',
+            'salary_per_hour' => 'required|max:191',
+            'description' => 'required',
+            'status' => 'required',
+            'type' => 'required',
         ];
     }
 }

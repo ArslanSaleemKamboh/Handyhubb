@@ -65,9 +65,8 @@ class UserController extends Controller
      */
     public function edit()
     {
-        // dd(Auth::user()->hasVerifiedEmail());
-        $profile=Auth::guard('web')->user()->profile;
-        return view('user.pages.profiles.update');
+        $data['profile']=Auth::User(); 
+        return view('user.pages.profiles.index',$data);
     }
 
     /**
@@ -79,41 +78,21 @@ class UserController extends Controller
      */
     public function update(UpdateProfileRequest $request)
     {
-            $file_name=isset(Auth::user()->profile->profile_img)?Auth::user()->profile->profile_img:NULL;
-            if(isset(Auth::user()->profile->profile_img)){
-                if(($request->file('profile_img'))){
-                $oldImage = public_path('storage/'.Auth::user()->profile->profile_img);
-                File::delete($oldImage);
-                }
-            }
+         $data_to_update = $request->validated();
             if($request->file('profile_img')){
+                $oldImage = public_path('storage/'.Auth::user()->profile_img);
+                File::delete($oldImage);
+
                 $img_uploaded=$request->file('profile_img')->store('public');
-                $file_name=$request->file('profile_img')->hashName();
+                $data_to_update['profile_img'] = $request->file('profile_img')->hashName();
+                
             }
-             $profile_updated=Profile::updateOrCreate(
-                    ['user_id'=>Auth::user()->id],
-                    [
-                        'user_id'=>Auth::user()->id, 
-                        'profile_img'=>$file_name,
-                        'address'=>$request->address,
-                        'city'=>$request->city,
-                        'state'=>$request->state,
-                        'zipcode'=>$request->zip_code,
-                        'country'=>$request->country,
-                        'phone_number'=>$request->phone,
-                        'gender'=>$request->gender
-                    ]
-                );
-                User::find(Auth::id())->update(['name'=>$request->name]);
-                if($profile_updated){
-                    return redirect()->route('home.profile.update')->with('success','Profile Updated Successfully');
-                }else{
-                    return redirect()->route('home.profile.update')->with('error','Some error occure! Plz contact with developer.');
-                }
+            User::where('id',Auth::id())->update($data_to_update); 
+            return redirect()->route('user.profile')->with('success','Profile Updated Successfully');
+                 
     }
     public function changePassword()
-    {
-        // dd(session());
+    { 
         return view('user.pages.profiles.change-password');
     }
     public function updatePassword(ChangePassword $request)

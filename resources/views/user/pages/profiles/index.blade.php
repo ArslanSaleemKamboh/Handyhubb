@@ -14,7 +14,7 @@
     </nav>
 </div>
 @if(!Auth::user()->hasVerifiedEmail())
-<div class="notification notice closeable">
+{{-- <div class="notification notice closeable">
 				<p>Your email address is not verified. Please <a href="{{route('verification.send')}}" 
                 onclick="event.preventDefault();
                             document.getElementById('email-verify-form').submit();"
@@ -23,11 +23,11 @@
 			</div>
             <form id="email-verify-form" method='POST' action="{{route('verification.send')}}" class="d-none">
                                         @csrf
-                                    </form>
+                                    </form> --}}
 @endif
 <!-- Row -->
 <div class="row">
-<form action="{{route('home.profile.save')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('user.update')}}" method="post" enctype="multipart/form-data">
     @csrf
     <!-- Dashboard Box -->
     <div class="col-xl-12">
@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="col-auto">
                         <div class="avatar-wrapper" data-tippy-placement="bottom" title="Change Avatar">
-                            <img class="profile-pic" src="{{(isset(Auth::user()->profile->profile_img))?asset('public/storage').'/'.Auth::user()->profile->profile_img:asset('public/frontend/images/user-avatar-placeholder.png')}}" alt="" />
+                            <img class="profile-pic" src="{{($profile->profile_img)?asset('public/storage').'/'.$profile->profile_img:asset('public/frontend/images/user-avatar-placeholder.png')}}" alt="" />
                             <div class="upload-button"></div>
                             <input class="file-upload" type="file" accept="image/*" name="profile_img"/>
                         </div>
@@ -79,8 +79,8 @@
                                     <h5>Gender</h5>
                                     <select name="gender" class="selectpicker" tabindex="-98">
                                         <option value="">Select Your Gender</option>
-                                        <option {{(isset(Auth::user()->profile->gender)=='male')?'selected':''}} value="male">male</option>
-                                        <option {{(isset(Auth::user()->profile->gender)=='female')?'selected':''}} value="female">female</option>
+                                        <option {{($profile->gender=='male')?'selected':''}} value="male">male</option>
+                                        <option {{($profile->gender=='female')?'selected':''}} value="female">female</option>
                                     </select>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                             <div class="col-xl-6">
                                 <div class="submit-field">
                                     <h5>Phone</h5>
-                                    <input name="phone" type="text" class="with-border @error('phone')is-invalid @enderror" value="{{(isset(Auth::user()->phone))?Auth::user()->phone:''}}">
+                                    <input name="phone" type="text" class="with-border @error('phone')is-invalid @enderror" value="{{($profile->phone)?$profile->phone:''}}">
                                     @error('phone')
               <div class="text-danger">
               {{$message}}
@@ -99,31 +99,31 @@
                             <div class="col-xl-6">
                                 <div class="submit-field">
                                     <h5>State</h5>
-                                    <input name="state" type="text" class="with-border" value="{{(isset(Auth::user()->profile->state))?Auth::user()->profile->state  :''}}">
+                                    <input name="state" type="text" class="with-border" value="{{($profile->state)?$profile->state  :''}}">
                                 </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="submit-field">
                                     <h5>Country</h5>
-                                    <input type="text" name="country" class="with-border" value="{{(isset(Auth::user()->profile->country))?Auth::user()->profile->country:''}}">
+                                    <input type="text" name="country" class="with-border" value="{{($profile->country)?$profile->country:''}}">
                                 </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="submit-field">
                                     <h5>City</h5>
-                                    <input type="text" name="city" class="with-border" value="{{(isset(Auth::user()->profile->city))?Auth::user()->profile->city:''}}">
+                                    <input type="text" name="city" class="with-border" value="{{($profile->city)?$profile->city:''}}">
                                 </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="submit-field">
                                     <h5>Zip Code</h5>
-                                    <input type="text" name="zip_code" class="with-border" value="{{(isset(Auth::user()->profile->zipcode))?Auth::user()->profile->zipcode:''}}">
+                                    <input type="text" name="zip_code" class="with-border" value="{{($profile->zipcode)?$profile->zipcode:''}}">
                                 </div>
                             </div>
                             <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Street Address</h5>
-                                    <input type="text" name="address" class="with-border" value="{{(isset(Auth::user()->profile->address))?Auth::user()->profile->address:''}}">
+                                    <input type="text" name="address" class="with-border" value="{{($profile->address)?$profile->address:''}}">
                                 </div>
                             </div>
 

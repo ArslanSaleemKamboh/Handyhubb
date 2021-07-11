@@ -17,13 +17,10 @@ class CreateJobPostsTable extends Migration
             $table->engine='InnoDB';
             $table->id();
             $table->foreignId('user_id');
-            $table->string('title');
-            $table->string('location');
-            $table->string('salery_range');
-            $table->string('requirements');
-            $table->string('benefits');
-            $table->string('applying_instructions');
-            $table->string('min_qualification');
+            $table->string('title')->nullable();
+            $table->string('location')->nullable();
+            $table->string('salary_per_hour')->nullable(); 
+            $table->longText('description')->nullable();  
             $table->integer('status')->comment('0=inActive,1=active');
             $table->binary('type');
             $table->timestamps();

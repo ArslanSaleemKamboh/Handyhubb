@@ -18,5 +18,6 @@
     </div>
 </div>
     @include('user.includes.scripts')
+    @yield('page-script')
 </body>
 </html>

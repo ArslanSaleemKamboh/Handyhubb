@@ -1,0 +1,16 @@
+.error{
+    color: red;
+}
+input.with-border.error {
+    border: 1px solid red;
+}
+textarea.with-border.error {
+    border: 1px solid red;
+}
+select.selectpicker.with-border.error {
+    border: 1px solid red;
+}
+
+.pagination svg.w-5.h-5{
+    display: none;
+}

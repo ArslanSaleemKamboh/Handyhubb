@@ -27,10 +27,14 @@ toastMixin.fire({
 			</div>
 @endif
 @if($message=Session::get('error'))
-<script>
- toastMixin.fire({
-    title: '{{$message}}',
-    icon: 'error'
-  });
-</script>
+<div class="notification error closeable">
+				<p>{{$message}}</p>
+				<a class="close"></a>
+			</div>
 @endif
+
+@if ($errors->any())
+            <div class="notification error closeable">
+                {!! implode('', $errors->all('<p>:message</p>')) !!}
+            </div>
+        @endif
