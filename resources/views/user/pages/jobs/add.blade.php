@@ -125,7 +125,8 @@
                             <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Job Description</h5>
-                                    <textarea cols="10" rows="2" name="description" class="with-border"> {{isset($data)?$data['description']:old('description')}}</textarea>
+</script>
+                                    <textarea cols="10" rows="2" name="description" id="description" class="with-border"> {{isset($data)?$data['description']:old('description')}}</textarea>
                                     <label id="description-error" class="error" for="description" style="display: none">This field is required</label><br>
                                     <div class="uploadButton margin-top-30">
                                         <input class="uploadButton-input" type="file" name="job_gallery[]" accept="image/*, application/pdf"
@@ -157,18 +158,19 @@
         </form>
     </div>
     <!-- Row / End -->
-@section('page-script')
+@section('page-script') 
 <script>
     $("#job_form").validate({
     rules: {
         title: "required",
         type: "required", 
+        description: "required", 
         location: "required",
         salary_per_hour: "required", 
-        description: "required", 
         status: "required"
     } 
 });
+
 </script>
 @endsection
 @endsection

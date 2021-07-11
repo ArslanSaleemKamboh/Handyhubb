@@ -8,3 +8,5 @@
 <link rel="stylesheet" href="{{asset('public/frontend/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('public/frontend/css/colors/blue.css')}}"> 
 
+<link rel="stylesheet" href="{{ asset('public/frontend/js/richtexteditor');}}/editor.css" />
+

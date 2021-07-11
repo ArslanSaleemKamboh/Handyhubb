@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\user\profile\UpdateRequest;
-use App\Models\Profile;
 use App\Models\User;
+use App\Models\Profile;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\user\profile\ChangePassword;
+use App\Http\Requests\user\profile\UpdateProfileRequest;
 
 class UserController extends Controller
 {
@@ -49,9 +52,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('user.pages.profiles.show');
     }
 
     /**
@@ -73,7 +76,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequest $request)
+    public function update(UpdateProfileRequest $request)
     {
          $data_to_update = $request->validated();
             if($request->file('profile_img')){
@@ -88,7 +91,23 @@ class UserController extends Controller
             return redirect()->route('user.profile')->with('success','Profile Updated Successfully');
                  
     }
-
+    public function changePassword()
+    { 
+        return view('user.pages.profiles.change-password');
+    }
+    public function updatePassword(ChangePassword $request)
+    {
+        
+        // dd($request);
+        $hashed_password=Hash::make($request->password);
+        session()->put('password_hash_web',$hashed_password);
+        // return redirect()->route('home.change_password')->with('success','Password Changed Successfully');
+        // dd(session());
+        $changedPassword=User::find(Auth::id())->update(['password'=>$hashed_password]);
+        if($changedPassword){
+            return redirect()->route('home.change_password')->with('success','Password Changed Successfully');
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *
