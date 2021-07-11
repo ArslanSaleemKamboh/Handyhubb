@@ -67,7 +67,7 @@
  <script>
 	 $(document).on('click', '.remove_job', function(){
 	var id = $(this).attr('data-id');
-	if(confirm('Are you sure to delete?')){
+	if(confirm('Are you sure you want to delete?')){
 		window.location.href  = "{{route('user.delete-job')}}"+'/'+id;
 	}
  });

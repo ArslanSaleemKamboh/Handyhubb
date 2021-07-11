@@ -39,11 +39,12 @@ Route::get('/single/{id}', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home/profile/update', [UserController::class, 'edit'])->name('home.profile.update');
-Route::post('/home/profile/save', [UserController::class, 'update'])->name('home.profile.save');
 
-Route::group(['prefix'=>'user','as'=>'user.'], function(){
+Route::group(['prefix'=>'user','as'=>'user.', 'middleware' => ['auth']], function(){
+    Route::get('/profile', [UserController::class, 'edit'])->name('profile');
+    Route::post('/update', [UserController::class, 'update'])->name('update');
 
+    
     Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
     Route::get('/add-Job/{id?}', [JobController::class, 'addJob'])->name('add-Job');
     Route::post('/post-Job', [JobController::class, 'postJob'])->name('post-Job');

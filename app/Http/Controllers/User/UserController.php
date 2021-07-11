@@ -63,6 +63,7 @@ class UserController extends Controller
     public function edit()
     {
         $profile=Auth::guard('web')->user()->profile;
+        dd($profile);
         return view('user.pages.profiles.update');
     }
 
