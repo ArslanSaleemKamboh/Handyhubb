@@ -10,3 +10,9 @@
 				<a class="close"></a>
 			</div>
 @endif
+
+@if ($errors->any())
+            <div class="notification error closeable">
+                {!! implode('', $errors->all('<p>:message</p>')) !!}
+            </div>
+        @endif

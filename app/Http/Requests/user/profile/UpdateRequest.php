@@ -24,8 +24,14 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'image|mimes:jpeg,png,jpg,gif|',
-            'phone'=>'numeric',
+            'profile_img' => 'image|mimes:jpeg,png,jpg,gif|',
+            'phone'=>'',
+            'state'=>'',
+            'country'=>'',
+            'city'=>'',
+            'zip_code'=>'',
+            'address'=>'',
+            'gender'=>'',
         ];
     }
 }

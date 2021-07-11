@@ -15,6 +15,7 @@
 	</div>
 	<div class="row">
 		<div class="col-xl-12">
+			@include('user.includes.message')
 			<div class="dashboard-box margin-top-0">
 
 				<!-- Headline -->
@@ -26,7 +27,6 @@
 					<ul class="dashboard-box-list">
 						@foreach ($data as $val)
 						<li>
-							
 							<div class="job-listing">
 								<div class="job-listing-details">
 									<div class="job-listing-description">
@@ -58,6 +58,31 @@
 @endforeach
 
 					</ul>
+					<div class="clearfix"></div>
+					<div class="pagination-container margin-top-40 margin-bottom-0">
+						<nav class="pagination">
+							@if ($data->lastPage() > 1)
+							<ul>
+								<li style="display: {{ ($data->currentPage() == 1) ? ' none' : '' }}">
+									<a href="{{ $data->url(1) }}">Previous</a>
+								</li>
+								@for ($i = 1; $i <= $data->lastPage(); $i++)
+									<li>
+										<a class="{{ ($data->currentPage() == $i) ? ' current-page' : '' }}" href="{{ $data->url($i) }}">{{ $i }}</a>
+									</li>
+								@endfor
+								<li style="display: {{ ($data->currentPage() == $data->lastPage()) ? ' none' : '' }}">
+									<a href="{{ $data->url($data->currentPage()+1) }}" >Next</a>
+								</li>
+							</ul>
+							@endif
+						</nav>
+					</div>
+
+					<div class="clearfix"></div>
+
+
+					<br><br><br><br> 
 				</div>
 			</div>
 		</div>

@@ -16,13 +16,9 @@
     </div>
 
     <!-- Row -->
-    <div class="row">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                {!! implode('', $errors->all('<div>:message</div>')) !!}
-            </div>
-        @endif
-        <form action="{{ route('user.post-Job') }}" method="POST">
+    <div class="row"> 
+        @include('user.includes.message')
+        <form action="{{ route('user.post-Job') }}" method="POST" id="job_form">
             {{ csrf_field() }}
             <!-- Dashboard Box -->
             <div class="col-xl-12">
@@ -39,7 +35,7 @@
                             <div class="col-xl-4">
                                 <div class="submit-field">
                                     <h5>Job Title</h5>
-                                    <input type="text" name="title" class="with-border" maxlength="200" min="2" value="{{isset($data)?$data['title']:old('title')}}">
+                                    <input type="text" name="title" class="with-border" maxlength="200" value="{{isset($data)?$data['title']:old('title')}}">
                                 </div>
                             </div>
 
@@ -55,6 +51,7 @@
                                         <option value="temporary" {{isset($data)&& $data['type'] == 'temporary' ? 'selected':''}}>Temporary</option>
                                     </select>
                                 </div>
+                                <label id="type-error" class="error" for="type" style="display: none">This field is required</label>
                             </div>
 
                             <div class="col-xl-4">
@@ -100,6 +97,7 @@
                                                 <i class="currency">USD</i>
                                             </div>
                                         </div>
+                                        <label id="salary_per_hour-error" class="error" for="salary_per_hour"  style="display: none">This field is required.</label>
                                     </div>
                                 </div>
                             </div>
@@ -128,8 +126,9 @@
                                 <div class="submit-field">
                                     <h5>Job Description</h5>
                                     <textarea cols="10" rows="2" name="description" class="with-border"> {{isset($data)?$data['description']:old('description')}}</textarea>
+                                    <label id="description-error" class="error" for="description" style="display: none">This field is required</label><br>
                                     <div class="uploadButton margin-top-30">
-                                        <input class="uploadButton-input" type="file" accept="image/*, application/pdf"
+                                        <input class="uploadButton-input" type="file" name="job_gallery[]" accept="image/*, application/pdf"
                                             id="upload" multiple />
                                         <label class="uploadButton-button ripple-effect" for="upload">Upload Files</label>
                                         <span class="uploadButton-file-name">Images or documents that might be helpful in
@@ -145,6 +144,7 @@
                                         <option value="0"  {{isset($data)&& $data['status'] == 0 ? 'selected':''}}>In-Active</option>
                                     </select>
                                 </div>
+                                <label id="status-error" class="error" for="status" style="display: none">This field is required</label>
                             </div>
                         </div>
                     </div>
@@ -157,4 +157,18 @@
         </form>
     </div>
     <!-- Row / End -->
+@section('page-script')
+<script>
+    $("#job_form").validate({
+    rules: {
+        title: "required",
+        type: "required", 
+        location: "required",
+        salary_per_hour: "required", 
+        description: "required", 
+        status: "required"
+    } 
+});
+</script>
+@endsection
 @endsection

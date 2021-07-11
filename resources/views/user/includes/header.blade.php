@@ -205,8 +205,8 @@
 						
 						<ul class="user-menu-small-nav">
 							<li><a href="{{route('home')}}"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
-							<li><a href="dashboard-settings.html"><i class="icon-material-outline-settings"></i> Settings</a></li>
-							<li>
+							<li><a href="{{route('user.profile')}}"><i class="icon-material-outline-settings"></i> Settings</a></li>
+							 <li>
                             <a href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();"

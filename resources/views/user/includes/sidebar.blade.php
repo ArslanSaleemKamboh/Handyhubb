@@ -26,7 +26,8 @@
 						</ul>
 						
 						<ul data-submenu-title="Organize and Manage">
-							<li><a href="#"><i class="icon-material-outline-business-center"></i> Jobs</a>
+							<li class="{{ (Request::is('user/jobs') || Request::is('user/add-Job'))? 'active-submenu':''}}">
+								<a href="#"><i class="icon-material-outline-business-center"></i> Jobs</a>
 								<ul>
 									<li><a href="{{route('user.jobs')}}">Manage Jobs <span class="nav-tag">{{App\Models\JobPost::where('user_id', Auth::id())->count();}}</span></a></li>
 							 
@@ -42,9 +43,9 @@
 								</ul>	
 							</li> --}}
 						</ul>
-
+					 
 						<ul data-submenu-title="Account">
-							<li><a href="dashboard-settings.html"><i class="icon-material-outline-settings"></i> Settings</a></li>
+							<li><a href="{{route('user.profile')}}"><i class="icon-material-outline-settings"></i> Settings</a></li>
 							<li><a href="index-logged-out.html"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
 						</ul>
 						

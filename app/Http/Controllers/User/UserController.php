@@ -62,9 +62,8 @@ class UserController extends Controller
      */
     public function edit()
     {
-        $profile=Auth::guard('web')->user()->profile;
-        dd($profile);
-        return view('user.pages.profiles.update');
+        $data['profile']=Auth::User(); 
+        return view('user.pages.profiles.index',$data);
     }
 
     /**
@@ -76,32 +75,18 @@ class UserController extends Controller
      */
     public function update(UpdateRequest $request)
     {
-            $file_name="";
-            $oldImage = public_path('storage/'.Auth::user()->profile->profile_img);
-            File::delete($oldImage);
+         $data_to_update = $request->validated();
             if($request->file('profile_img')){
+                $oldImage = public_path('storage/'.Auth::user()->profile_img);
+                File::delete($oldImage);
+
                 $img_uploaded=$request->file('profile_img')->store('public');
-                $file_name=$request->file('profile_img')->hashName();
+                $data_to_update['profile_img'] = $request->file('profile_img')->hashName();
+                
             }
-             $profile_updated=Profile::updateOrCreate(
-                    ['user_id'=>Auth::user()->id],
-                    [
-                        'user_id'=>Auth::user()->id, 
-                        'profile_img'=>$file_name,
-                        'address'=>$request->address,
-                        'city'=>$request->city,
-                        'state'=>$request->state,
-                        'zipcode'=>$request->zip_code,
-                        'country'=>$request->country,
-                        'phone_number'=>$request->phone,
-                        'gender'=>$request->gender
-                    ]
-                );
-                if($profile_updated){
-                    return redirect()->route('home.profile.update')->with('success','Profile Updated Successfully');
-                }else{
-                    return redirect()->route('home.profile.update')->with('error','Some error occure.');
-                }
+            User::where('id',Auth::id())->update($data_to_update); 
+            return redirect()->route('user.profile')->with('success','Profile Updated Successfully');
+                 
     }
 
     /**

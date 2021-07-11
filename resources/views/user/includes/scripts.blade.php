@@ -11,7 +11,8 @@
 <script src="{{asset('public/frontend');}}/js/magnific-popup.min.js"></script>
 <script src="{{asset('public/frontend');}}/js/slick.min.js"></script>
 <script src="{{asset('public/frontend');}}/js/custom.js"></script>
-<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+<script src="{{ asset('/public/frontend/js/form_validation/jquery.validate.js') }}"></script> 
 <script>
     // Snackbar for user status switcher
     // $('#snackbar-user-status label').click(function() { 

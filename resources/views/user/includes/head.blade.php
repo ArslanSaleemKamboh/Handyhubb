@@ -3,6 +3,8 @@
 
 <!-- CSS
 ================================================== -->
+
+<link rel="stylesheet" href="{{asset('public/frontend/css/custom_style.css')}}">
 <link rel="stylesheet" href="{{asset('public/frontend/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('public/frontend/css/colors/blue.css')}}"> 
 

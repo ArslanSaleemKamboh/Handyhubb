@@ -16,7 +16,7 @@
 @include('user.includes.message')
 <!-- Row -->
 <div class="row">
-<form action="{{route('home.profile.save')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('user.update')}}" method="post" enctype="multipart/form-data">
     @csrf
     <!-- Dashboard Box -->
     <div class="col-xl-12">
@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-auto">
                         <div class="avatar-wrapper" data-tippy-placement="bottom" title="Change Avatar">
-                            <img class="profile-pic" src="{{(Auth::guard('web')->user()->profile->profile_img)?asset('public/storage').'/'.Auth::guard('web')->user()->profile->profile_img:asset('public/frontend/images/user-avatar-placeholder.png')}}" alt="" />
+                            <img class="profile-pic" src="{{($profile->profile_img)?asset('public/storage').'/'.$profile->profile_img:asset('public/frontend/images/user-avatar-placeholder.png')}}" alt="" />
                             <div class="upload-button"></div>
                             <input class="file-upload" type="file" accept="image/*" name="profile_img"/>
                         </div>
@@ -47,8 +47,8 @@
                                     <h5>Gender</h5>
                                     <select name="gender" class="selectpicker">
                                         <option value="">Select Your Gender</option>
-                                        <option {{(Auth::guard('web')->user()->profile->gender=='male')?'selected':''}} value="male">male</option>
-                                        <option {{(Auth::guard('web')->user()->profile->gender=='female')?'selected':''}} value="female">female</option>
+                                        <option {{($profile->gender=='male')?'selected':''}} value="male">male</option>
+                                        <option {{($profile->gender=='female')?'selected':''}} value="female">female</option>
                                     </select>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                             <div class="col-xl-6">
                                 <div class="submit-field">
                                     <h5>Phone</h5>
-                                    <input name="phone" type="text" class="with-border @error('phone')is-invalid @enderror" value="{{(Auth::guard('web')->user()->phone)?Auth::guard('web')->user()->phone:''}}">
+                                    <input name="phone" type="text" class="with-border @error('phone')is-invalid @enderror" value="{{($profile->phone)?$profile->phone:''}}">
                                     @error('phone')
               <div class="text-danger">
               {{$message}}
@@ -67,31 +67,31 @@
                             <div class="col-xl-6">
                                 <div class="submit-field">
                                     <h5>State</h5>
-                                    <input name="state" type="text" class="with-border" value="{{(Auth::guard('web')->user()->profile->state)?Auth::guard('web')->user()->profile->state  :''}}">
+                                    <input name="state" type="text" class="with-border" value="{{($profile->state)?$profile->state  :''}}">
                                 </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="submit-field">
                                     <h5>Country</h5>
-                                    <input type="text" name="country" class="with-border" value="{{(Auth::guard('web')->user()->profile->country)?Auth::guard('web')->user()->profile->country:''}}">
+                                    <input type="text" name="country" class="with-border" value="{{($profile->country)?$profile->country:''}}">
                                 </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="submit-field">
                                     <h5>City</h5>
-                                    <input type="text" name="city" class="with-border" value="{{(Auth::guard('web')->user()->profile->city)?Auth::guard('web')->user()->profile->city:''}}">
+                                    <input type="text" name="city" class="with-border" value="{{($profile->city)?$profile->city:''}}">
                                 </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="submit-field">
                                     <h5>Zip Code</h5>
-                                    <input type="text" name="zip_code" class="with-border" value="{{(Auth::guard('web')->user()->profile->zipcode)?Auth::guard('web')->user()->profile->zipcode:''}}">
+                                    <input type="text" name="zip_code" class="with-border" value="{{($profile->zipcode)?$profile->zipcode:''}}">
                                 </div>
                             </div>
                             <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Street Address</h5>
-                                    <input type="text" name="address" class="with-border" value="{{(Auth::guard('web')->user()->profile->address)?Auth::guard('web')->user()->profile->address:''}}">
+                                    <input type="text" name="address" class="with-border" value="{{($profile->address)?$profile->address:''}}">
                                 </div>
                             </div>
 

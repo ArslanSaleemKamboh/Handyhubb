@@ -12,7 +12,7 @@ class JobController extends Controller
 {
     public function index()
     {
-        $data['data'] = JobPost::where('user_id', Auth::id())->paginate(10);
+        $data['data'] = JobPost::where('user_id', Auth::id())->paginate(5);
         return view('user.pages.jobs.list', $data);
     }
     public function addJob(Request $request)
