@@ -20,9 +20,9 @@ class CreateJobGalleriesTable extends Migration
             $table->string('image');
             $table->timestamps();
         });
-        Schema::table('job_galleries',function(Blueprint $table){
-            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
-        });
+        // Schema::table('job_galleries',function(Blueprint $table){
+        //     $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
+        // });
     }
 
     /**

@@ -17,11 +17,12 @@ class CreateCategoriesTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('name');
-            $table->string('title');
+            $table->string('type');
+            $table->string('title')->nullable();
             $table->integer('parent_id')->default(0);
-            $table->integer('sort_no');
-            $table->string('status');
-            $table->string('in_header');
+            $table->integer('sort_no')->nullable();
+            $table->string('status')->nullable();
+            $table->string('in_header')->nullable();
             $table->timestamps();
         });
     }

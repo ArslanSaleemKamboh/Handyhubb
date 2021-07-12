@@ -30,14 +30,36 @@
 							<div class="job-listing">
 								<div class="job-listing-details">
 									<div class="job-listing-description">
-										<h3 class="job-listing-title"><a href="#">{{$val['title']}}</a> <span class="dashboard-status-button {{($val['status'] ==1?'green':'red')}}">{{($val['status'] ==1?'Active':'In-Active')}}</span></h3>
-
+										<h3 class="job-listing-title">
+											<a href="#">{{$val['title']}}</a> <span class="dashboard-status-button {{($val['status'] ==1?'green':'red')}}">{{($val['status'] ==1?'Active':'In-Active')}}</span></h3>
 										
+								    @if ($val->getCategory && count($val->getCategory) >0) 
+										 <div class="row">
+											<div class="col-md-12">
+												<h3 class="job-listing-title">Categories</h3>
+													@foreach ($val->getCategory as $category)
+													<span class="keyword"><span class="keyword-text">{{$category->getName->name}}</span></span>
+													@endforeach
+											</div>
+										</div>
+										@endif
+										
+										@if ($val['tags']) 
+										<div class="row">
+										   <div class="col-md-12">
+											   <h3 class="job-listing-title">Tags</h3>
+												   @foreach (explode(',',$val['tags']) as $tag)
+												   <span class="keyword"><span class="keyword-text">{{$tag}}</span></span>
+												   @endforeach
+										   </div>
+									   </div>
+									   @endif
+
 										<div class="job-listing-footer">
 											<ul>
 												<li>
-												<h4>Description:</h4>
-												<p>{{($val['description'])? $val['description']:'N/A'}}</p>	
+												<h3 class="job-listing-title">Description:</h3>
+												<p>{{($val['description'])? substr($val['description'], 0, 50):'N/A'}}</p>	
 												</li> 
 										 </ul>
 											<ul> 
@@ -51,7 +73,7 @@
 							<!-- Buttons -->
 							<div class="buttons-to-right always-visible">
 								<a href="" class="button ripple-effect"><i class="icon-material-outline-supervisor-account"></i> Manage Candidates <span class="button-info">0</span></a>
-								<a href="{{route('user.add-Job', $val['id'])}}" class="button gray ripple-effect ico" data-tippy-placement="top" data-tippy="" data-original-title="Edit"><i class="icon-feather-edit"></i></a>
+								<a href="{{route('user.add-Job').'/'.$val['id']}}" class="button gray ripple-effect ico" data-tippy-placement="top" data-tippy="" data-original-title="Edit"><i class="icon-feather-edit"></i></a>
 								<a href="javascript:void(0)" data-id="{{$val['id']}}" class="button gray ripple-effect ico remove_job" data-tippy-placement="top" data-tippy="" data-original-title="Remove"><i class="icon-feather-trash-2"></i></a>
 							</div>
 						</li>

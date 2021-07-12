@@ -3,7 +3,11 @@
 "use strict";
 
 $(document).ready(function(){
-	
+	 let keywords = [];
+	 if($('#added_tags').val() != ''){
+		keywords = $('#added_tags').val().split(','); 
+		console.log(keywords);
+	 } 
 	/*--------------------------------------------------*/
 	/*  Mobile Menu - mmenu.js
 	/*--------------------------------------------------*/
@@ -798,6 +802,10 @@ $(document).ready(function(){
 
 		// adding keyword
 		function addKeyword() {
+			keywords.push(keywordInput.val());
+		    $('#added_tags').val(keywords);
+
+			
 			var $newKeyword = $("<span class='keyword'><span class='keyword-remove'></span><span class='keyword-text'>"+ keywordInput.val() +"</span></span>");
 			keywordsList.append($newKeyword).trigger('resizeContainer');
 			keywordInput.val("");
@@ -811,21 +819,30 @@ $(document).ready(function(){
 		});
 
 		// add via button
-		$('.keyword-input-button').on('click', function(){ 
+		$('.keyword-input-button').on('click', function(e){ 
 			if((keywordInput.val()!=="")){
 				addKeyword();
+				e.preventDefault();
 			}
 		});
 
 		// removing keyword
-		$(document).on("click",".keyword-remove", function(){
-			$(this).parent().addClass('keyword-removed');
+		$(document).on("click",".keyword-remove", function(e){
+			$(this).parent().addClass('keyword-removed'); 
 
 			function removeFromMarkup(){
+			  let index_val = $(".keyword-removed").text();
+			   
+			  const index = keywords.indexOf(index_val);
+			  if (index > -1) {
+			    keywords.splice(index, 1);
+			  }
+			  $('#added_tags').val(keywords);
 			  $(".keyword-removed").remove();
 			}
 			setTimeout(removeFromMarkup, 500);
 			keywordsList.css({'height':'auto'}).height();
+			e.preventDefault();
 		});
 
 

@@ -52,7 +52,7 @@ Route::group(['prefix'=>'user','as'=>'user.'], function(){
     
     Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
     Route::get('/add-Job/{id?}', [JobController::class, 'addJob'])->name('add-Job');
-    Route::post('/post-Job', [JobController::class, 'postJob'])->name('post-Job');
+    Route::post('/add-Job', [JobController::class, 'postJob'])->name('add-Job');
     Route::get('/delete-job/{id?}', [JobController::class, 'deleteJob'])->name('delete-job');
 });
 
