@@ -21,8 +21,9 @@ class CreateJobPostsTable extends Migration
             $table->string('location')->nullable();
             $table->string('salary_per_hour')->nullable(); 
             $table->longText('description')->nullable();  
+            $table->text('tags')->nullable();  
             $table->integer('status')->comment('0=inActive,1=active');
-            $table->binary('type');
+            $table->string('type');
             $table->timestamps();
         });
         Schema::table('job_posts',function(Blueprint $table){

@@ -30,6 +30,10 @@ class storeJobRequest extends FormRequest
             'description' => 'required',
             'status' => 'required',
             'type' => 'required',
+            'filename.*' => 'max:2048',
+            'category' => 'required',
+            'tags' => 'required',
+            'edit_id' => '',
         ];
     }
 }

@@ -18,7 +18,7 @@
     <!-- Row -->
     <div class="row"> 
         @include('user.includes.message')
-        <form action="{{ route('user.post-Job') }}" method="POST" id="job_form">
+        <form action="{{ route('user.add-Job') }}" method="POST" id="job_form" enctype="multipart/form-data">
             {{ csrf_field() }}
             <!-- Dashboard Box -->
             <div class="col-xl-12">
@@ -35,6 +35,7 @@
                             <div class="col-xl-4">
                                 <div class="submit-field">
                                     <h5>Job Title</h5>
+                                    <input type="hidden" name="edit_id" value="{{isset($data)?$data['id']:''}}">
                                     <input type="text" name="title" class="with-border" maxlength="200" value="{{isset($data)?$data['title']:old('title')}}">
                                 </div>
                             </div>
@@ -56,21 +57,23 @@
 
                             <div class="col-xl-4">
                                 <div class="submit-field">
-                                    <h5>Job Category</h5>
-                                    <select class="selectpicker with-border" data-size="7" title="Select Category">
-                                        <option>Accounting and Finance</option>
-                                        <option>Clerical & Data Entry</option>
-                                        <option>Counseling</option>
-                                        <option>Court Administration</option>
-                                        <option>Human Resources</option>
-                                        <option>Investigative</option>
-                                        <option>IT and Computers</option>
-                                        <option>Law Enforcement</option>
-                                        <option>Management</option>
-                                        <option>Miscellaneous</option>
-                                        <option>Public Relations</option>
+                                    <h5>Job Category</h5> 
+                                    @php
+                                    $ids = []; 
+                                    if (isset($data)) {
+                                        $ids = $data->getCategory->pluck('category_id')->toArray();
+                                    }
+                                       
+                                    @endphp
+                                    <select class="selectpicker with-border" name="category[]" data-size="7" title="Select Category" multiple>
+                                        <option>Please select category</option>
+                                       @foreach ($category as $val)
+                                       <option value="{{$val->id}}" {{isset($data)&& in_array($val->id, $ids)? 'selected':''}}> {{$val->title}}</option>
+                                       @endforeach 
+                                       
                                     </select>
                                 </div>
+                                <label id="category[]-error" class="error" for="category[]" style="display: none">This field is required</label>
                             </div>
 
                             <div class="col-xl-4">
@@ -108,6 +111,7 @@
                                             title="Maximum of 10 tags"></i></h5>
                                     <div class="keywords-container">
                                         <div class="keyword-input-container">
+                                            <input type="hidden" name="tags" id="added_tags" value="{{(isset($data['tags'])?$data['tags']:'')}}">
                                             <input type="text" class="keyword-input with-border"
                                                 placeholder="e.g. job title, responsibilites" />
                                             <button class="keyword-input-button ripple-effect"><i
@@ -115,6 +119,15 @@
                                         </div>
                                         <div class="keywords-list">
                                             <!-- keywords go here -->
+                                            @php 
+                                                $tags = [];
+                                                if (isset($data['tags'])) {
+                                                   $tags = explode(',', $data['tags']);
+                                                }                                                       
+                                                @endphp
+                                                @foreach ($tags as $tag)
+                                            <span class="keyword"><span class="keyword-remove"></span><span class="keyword-text">{{$tag}}</span></span>
+                                            @endforeach
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -125,12 +138,10 @@
                             <div class="col-xl-12">
                                 <div class="submit-field">
                                     <h5>Job Description</h5>
-</script>
-                                    <textarea cols="10" rows="2" name="description" id="description" class="with-border"> {{isset($data)?$data['description']:old('description')}}</textarea>
-                                    <label id="description-error" class="error" for="description" style="display: none">This field is required</label><br>
-                                    <div class="uploadButton margin-top-30">
-                                        <input class="uploadButton-input" type="file" name="job_gallery[]" accept="image/*, application/pdf"
-                                            id="upload" multiple />
+                                    <textarea cols="10" rows="2" name="description" id="description" class="with-border">{{isset($data)?$data['description']:old('description')}}</textarea>
+                                    
+                                     <div class="uploadButton margin-top-30">
+                                        <input class="uploadButton-input" type="file" name="filename[]" id="upload" multiple />
                                         <label class="uploadButton-button ripple-effect" for="upload">Upload Files</label>
                                         <span class="uploadButton-file-name">Images or documents that might be helpful in
                                             describing your job</span>
@@ -141,6 +152,7 @@
                                 <div class="submit-field">
                                     <h5>Status</h5>
                                     <select class="selectpicker with-border" name="status" title="Status">
+                                        <option value="">Please select status</option>
                                         <option value="1" {{isset($data)&& $data['status'] == 1 ? 'selected':''}}>Active</option>
                                         <option value="0"  {{isset($data)&& $data['status'] == 0 ? 'selected':''}}>In-Active</option>
                                     </select>
@@ -162,13 +174,51 @@
 <script>
     $("#job_form").validate({
     rules: {
-        title: "required",
-        type: "required", 
-        description: "required", 
-        location: "required",
-        salary_per_hour: "required", 
-        status: "required"
-    } 
+        title: {
+      required: true,
+      normalizer: function( value ) { 
+        return $.trim( value );
+      }},
+        type: {
+      required: true,
+      normalizer: function( value ) { 
+        return $.trim( value );
+      }}, 
+        'category[]': {
+      required: true,
+      normalizer: function( value ) { 
+        return $.trim( value );
+      }}, 
+        description: {
+      required: true,
+      normalizer: function( value ) { 
+        return $.trim( value );
+      }}, 
+        location: {
+      required: true,
+      normalizer: function( value ) { 
+        return $.trim( value );
+      }},
+        salary_per_hour: {
+      required: true,
+      normalizer: function( value ) { 
+        return $.trim( value );
+      }}, 
+        status: {
+      required: true,
+      normalizer: function( value ) { 
+        return $.trim( value );
+      }}
+    },
+    messages: {
+        title: "This field is required",
+        type: "This field is required", 
+        'category[]': "This field is required", 
+        description: "This field is required", 
+        location: "This field is required", 
+        salary_per_hour: "This field is required", 
+        status: "This field is required", 
+    }
 });
 
 </script>
