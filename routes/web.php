@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController; 
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\JobListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,14 +29,13 @@ Route::prefix('providers')->group(function(){
         return view('frontend.pages.providers.show');
     })->name('providers.single');
 });
-Route::prefix('jobs')->group(function(){
-Route::get('/list', function () {
-    return view('frontend.pages.jobs.list');
+Route::group(['prefix'=>'jobs','as'=>'jobs.'], function(){
+
+    Route::get('/', [JobListController::class,'index']);
+    Route::get('/single/{id}', [JobListController::class,'jobDetail']);
+    
 });
-Route::get('/single/{id}', function () {
-    return view('frontend.pages.jobs.show');
-})->name('jobs.single');
-});
+ 
 
 Auth::routes();
 Route::middleware(['auth:web'])->group(function(){

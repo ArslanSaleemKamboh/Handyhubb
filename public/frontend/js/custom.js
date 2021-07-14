@@ -4,7 +4,7 @@
 
 $(document).ready(function(){
 	 let keywords = [];
-	 if($('#added_tags').val() != ''){
+	 if($('#added_tags').length && $('#added_tags').val() != ''){
 		keywords = $('#added_tags').val().split(','); 
 		console.log(keywords);
 	 } 
